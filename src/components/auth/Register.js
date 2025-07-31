@@ -43,7 +43,7 @@ function Register() {
 
     try {
       // Enviar datos en el formato que espera el backend
-      await axiosInstance.post('http://localhost:8000/api/users/register/', {
+      await axiosInstance.post('https://backend-web-fapecafes.onrender.com/api/users/register/', {
         username: formData.username,
         email: formData.email,
         password: formData.password,
