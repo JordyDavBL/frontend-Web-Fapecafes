@@ -1,0 +1,525 @@
+/* Estilos para la página de Contabilidad de Costos */
+
+.contabilidad-container {
+    flex: 1;
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    margin-left: 250px; /* Espacio para el sidebar */
+    padding-top: 80px; /* Espacio para el header superior */
+}
+
+.contabilidad-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.contabilidad-header h1 {
+    color: #2c3e50;
+    margin: 0 0 10px 0;
+    font-size: 2.5rem;
+}
+
+.contabilidad-header p {
+    color: #7f8c8d;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.lotes-contabilidad-section {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.lotes-contabilidad-section h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.lotes-contabilidad-table {
+    overflow-x: auto;
+}
+
+.lotes-contabilidad-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.lotes-contabilidad-table th,
+.lotes-contabilidad-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.lotes-contabilidad-table th {
+    background-color: #34495e;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.lotes-contabilidad-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.lotes-contabilidad-table tr.con-actividad {
+    background-color: #e8f5e9;
+}
+
+.lotes-contabilidad-table tr.sin-actividad {
+    background-color: #fff3e0;
+}
+
+.estado-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.estado-badge.pendiente {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.estado-badge.en_proceso {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.estado-badge.aprobado {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.estado-badge.rechazado {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.estado-badge.separacion_pendiente {
+    background-color: #e2e3e5;
+    color: #383d41;
+}
+
+.estado-badge.separacion_aplicada {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.estado-badge.limpio {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.estado-badge.separado {
+    background-color: #ffeaa7;
+    color: #6c5ce7;
+}
+
+.estado-badge.finalizado {
+    background-color: #a8e6cf;
+    color: #2d3436;
+}
+
+.fase-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #000000; /* Color negro para mejor contraste */
+}
+
+.fase-badge.pilado {
+    background-color: #e3f2fd;
+}
+
+.fase-badge.clasificacion {
+    background-color: #f3e5f5;
+}
+
+.fase-badge.densidad {
+    background-color: #e8f5e9;
+}
+
+.fase-badge.color {
+    background-color: #fff3e0;
+}
+
+.fase-badge.empaque {
+    background-color: #fce4ec;
+}
+
+.actividad-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.actividad-badge.si {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.actividad-badge.no {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.btn-ver-detalle {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.btn-ver-detalle:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+.btn-ver-detalle:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+/* Estilos para el modal */
+.contabilidad-modal {
+    max-width: 90vw;
+    max-height: 90vh;
+    width: 1200px;
+    overflow-y: auto;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    padding: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #f8f9fa;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.5rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #7f8c8d;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.close-btn:hover {
+    background-color: #e0e0e0;
+    color: #2c3e50;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.lote-info-header {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border-left: 4px solid #3498db;
+}
+
+.lote-info-header h4 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.lote-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.lote-info-grid div {
+    color: #34495e;
+    font-size: 0.95rem;
+}
+
+.informacion-procesos {
+    margin-top: 20px;
+}
+
+.informacion-procesos h4 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+.contabilidad-tabla {
+    overflow-x: auto;
+    margin-top: 15px;
+}
+
+.contabilidad-tabla table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.contabilidad-tabla th,
+.contabilidad-tabla td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #e0e0e0;
+}
+
+.contabilidad-tabla th {
+    background-color: #34495e;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.contabilidad-tabla tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.contabilidad-tabla tr:hover {
+    background-color: #e3f2fd;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 20px;
+    border-top: 1px solid #e0e0e0;
+    background-color: #f8f9fa;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+/* Loading overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-spinner {
+    font-size: 1.2rem;
+    color: #3498db;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .contabilidad-container {
+        margin-left: 200px; /* Sidebar más pequeño en tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .contabilidad-container {
+        margin-left: 0; /* Sin sidebar en móviles */
+        padding: 10px;
+        padding-top: 60px; /* Reducir padding superior */
+    }
+    
+    .contabilidad-header h1 {
+        font-size: 2rem;
+    }
+    
+    .lotes-contabilidad-table,
+    .contabilidad-tabla {
+        font-size: 0.8rem;
+    }
+    
+    .lotes-contabilidad-table th,
+    .lotes-contabilidad-table td,
+    .contabilidad-tabla th,
+    .contabilidad-tabla td {
+        padding: 8px;
+    }
+    
+    .contabilidad-modal {
+        width: 95vw;
+        max-width: 95vw;
+    }
+    
+    .lote-info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .contabilidad-container {
+        padding: 5px;
+        padding-top: 60px;
+    }
+    
+    .contabilidad-header {
+        padding: 15px;
+    }
+    
+    .contabilidad-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .lotes-contabilidad-section {
+        padding: 15px;
+    }
+    
+    .lotes-contabilidad-table th,
+    .lotes-contabilidad-table td {
+        padding: 6px;
+        font-size: 0.7rem;
+    }
+    
+    .btn-ver-detalle {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Estilos para impresión */
+@media print {
+    .contabilidad-container {
+        margin-left: 0;
+        padding: 0;
+    }
+    
+    .modal-overlay {
+        position: static;
+        background: none;
+    }
+    
+    .modal-content {
+        box-shadow: none;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .modal-header,
+    .modal-footer {
+        display: none;
+    }
+    
+    .contabilidad-tabla table {
+        border: 1px solid #000;
+    }
+    
+    .contabilidad-tabla th,
+    .contabilidad-tabla td {
+        border: 1px solid #000;
+    }
+    
+    .contabilidad-tabla th {
+        background-color: #f0f0f0 !important;
+        color: #000 !important;
+    }
+}
