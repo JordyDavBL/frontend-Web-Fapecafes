@@ -107,7 +107,7 @@ const AnalisisMuestra = () => {
 
     const cargarMuestras = async () => {
         try {
-            const response = await axiosInstance.get('http://localhost:8000/api/users/muestras/');
+            const response = await axiosInstance.get('/users/muestras/');
             const muestrasData = response.data;
             
             // Agregar logging para debugging de la estructura de datos
@@ -126,7 +126,7 @@ const AnalisisMuestra = () => {
 
     const cargarLotes = async () => {
         try {
-            const response = await axiosInstance.get('http://localhost:8000/api/users/lotes/');
+            const response = await axiosInstance.get('/users/lotes/');
             // Filtrar solo los lotes en estado PENDIENTE
             const lotesPendientes = response.data.filter(lote => lote.estado === 'PENDIENTE');
             setLotes(lotesPendientes);
@@ -143,7 +143,7 @@ const AnalisisMuestra = () => {
     // Nueva función para cargar tareas realizadas
     const cargarTareas = async () => {
         try {
-            const response = await axiosInstance.get('http://localhost:8000/api/users/tareas/');
+            const response = await axiosInstance.get('/users/tareas/');
             setTareas(response.data);
             console.log('Tareas cargadas exitosamente:', response.data.length);
         } catch (error) {
@@ -160,7 +160,7 @@ const AnalisisMuestra = () => {
     // Nueva función para cargar insumos disponibles
     const cargarInsumos = async () => {
         try {
-            const response = await axiosInstance.get('http://localhost:8000/api/users/insumos/');
+            const response = await axiosInstance.get('/users/insumos/');
             // Filtrar solo insumos activos
             const insumosActivos = response.data.filter(insumo => insumo.activo);
             setInsumosDisponibles(insumosActivos);
@@ -210,7 +210,7 @@ const AnalisisMuestra = () => {
 
             console.log('Enviando datos de selección de muestras:', datosSeleccion);
             
-            const response = await axiosInstance.post('http://localhost:8000/api/users/muestras/seleccionar/', datosSeleccion);
+            const response = await axiosInstance.post('/users/muestras/seleccionar/', datosSeleccion);
             
             console.log('Respuesta del servidor:', response.data);
             alert('Muestras seleccionadas exitosamente. El lote está ahora en proceso de análisis.');
@@ -464,7 +464,7 @@ La muestra ${selectedMuestra?.numero_muestra} ha sido rechazada por contaminaci�
         e.preventDefault();
         try {
             const response = await axiosInstance.post(
-                `http://localhost:8000/api/users/muestras/${selectedMuestra.id}/resultado/`,
+                `/users/muestras/${selectedMuestra.id}/resultado/`,
                 formData
             );
             
