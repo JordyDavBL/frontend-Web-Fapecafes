@@ -69,10 +69,10 @@ const Reportes = () => {
         setLoading(true);
         try {
             const [lotesRes, orgRes, muestrasRes, procesosRes] = await Promise.all([
-                axiosInstance.get('http://localhost:8000/api/users/lotes/'),
-                axiosInstance.get('http://localhost:8000/api/users/organizaciones/'),
-                axiosInstance.get('http://localhost:8000/api/users/muestras/'),
-                axiosInstance.get('http://localhost:8000/api/users/procesos/')
+                axiosInstance.get('/users/lotes/'),
+                axiosInstance.get('/users/organizaciones/'),
+                axiosInstance.get('/users/muestras/'),
+                axiosInstance.get('/users/procesos/')
             ]);
             
             setLotes(lotesRes.data);

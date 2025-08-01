@@ -55,9 +55,9 @@ const Personal = () => {
         try {
             // Cargar propietarios maestros, lotes y organizaciones
             const [propResponse, lotesResponse, orgResponse] = await Promise.all([
-                axiosInstance.get('http://localhost:8000/api/users/propietarios-maestros/'),
-                axiosInstance.get('http://localhost:8000/api/users/lotes/'),
-                axiosInstance.get('http://localhost:8000/api/users/organizaciones/')
+                axiosInstance.get('/users/propietarios-maestros/'),
+                axiosInstance.get('/users/lotes/'),
+                axiosInstance.get('/users/organizaciones/')
             ]);
             
             const propietariosMaestrosData = propResponse.data.results || propResponse.data;
@@ -127,7 +127,7 @@ const Personal = () => {
     const cargarPropietariosMaestros = async () => {
         setLoading(true);
         try {
-            const response = await axiosInstance.get('http://localhost:8000/api/users/propietarios-maestros/');
+            const response = await axiosInstance.get('/users/propietarios-maestros/');
             
             // Procesar propietarios maestros para mostrar en la interfaz
             const propietariosMaestrosData = response.data.results || response.data;
@@ -153,8 +153,8 @@ const Personal = () => {
         try {
             // Obtener todos los lotes y muestras
             const [lotesRes, muestrasRes] = await Promise.all([
-                axiosInstance.get('http://localhost:8000/api/users/lotes/'),
-                axiosInstance.get('http://localhost:8000/api/users/muestras/')
+                axiosInstance.get('/users/lotes/'),
+                axiosInstance.get('/users/muestras/')
             ]);
             
             // Filtrar historial por propietario (usando cédula como identificador único)
@@ -249,7 +249,7 @@ const Personal = () => {
         
         try {
             await axiosInstance.put(
-                `http://localhost:8000/api/users/propietarios-maestros/${propietarioEditando.id}/`,
+                `/users/propietarios-maestros/${propietarioEditando.id}/`,
                 formEditarPropietario
             );
             
@@ -270,7 +270,7 @@ const Personal = () => {
     const eliminarPropietario = async (propietario) => {
         if (window.confirm(`¿Está seguro de que desea eliminar al propietario ${propietario.nombre_completo}? Esta acción no se puede deshacer.`)) {
             try {
-                await axiosInstance.delete(`http://localhost:8000/api/users/propietarios-maestros/${propietario.id}/`);
+                await axiosInstance.delete(`/users/propietarios-maestros/${propietario.id}/`);
                 
                 alert('Propietario eliminado exitosamente');
                 cargarDatos(); // Recargar datos usando cargarDatos en lugar de cargarPropietariosMaestros

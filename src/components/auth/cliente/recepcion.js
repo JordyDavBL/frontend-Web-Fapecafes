@@ -86,9 +86,9 @@ const Recepcion = () => {
         setLoading(true);
         try {
             const [lotesRes, orgRes, lotesRecepcionRes] = await Promise.all([
-                axiosInstance.get('http://localhost:8000/api/users/lotes/'),
-                axiosInstance.get('http://localhost:8000/api/users/organizaciones/'),
-                axiosInstance.get('http://localhost:8000/api/users/lotes/listos-recepcion-final/')
+                axiosInstance.get('/users/lotes/'),
+                axiosInstance.get('/users/organizaciones/'),
+                axiosInstance.get('/users/lotes/listos-recepcion-final/')
             ]);
             
             // Combinar lotes normales con lotes listos para recepción
@@ -341,11 +341,11 @@ const Recepcion = () => {
 
             if (modalType === 'editar') {
                 // Actualizar lote existente
-                await axiosInstance.put(`http://localhost:8000/api/users/lotes/${selectedLote.id}/`, loteData);
+                await axiosInstance.put(`/users/lotes/${selectedLote.id}/`, loteData);
                 alert('Lote actualizado exitosamente');
             } else {
                 // Crear nuevo lote
-                await axiosInstance.post('http://localhost:8000/api/users/lotes/crear-con-propietarios/', loteData);
+                await axiosInstance.post('/users/lotes/crear-con-propietarios/', loteData);
                 alert('Lote recibido y registrado exitosamente');
             }
             
@@ -426,7 +426,7 @@ const Recepcion = () => {
 
         try {
             const response = await axiosInstance.post(
-                'http://localhost:8000/api/users/lotes/enviar-recepcion-final/',
+                '/users/lotes/enviar-recepcion-final/',
                 {
                     lote_id: lote.id,
                     responsable_recepcion: responsable,

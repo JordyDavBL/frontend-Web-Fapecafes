@@ -65,7 +65,7 @@ const SeparacionColores = () => {
             const axiosConfig = getAxiosConfig();
             console.log('Cargando lotes con configuración:', axiosConfig);
             
-            const response = await axiosInstance.get('http://localhost:8000/api/users/lotes/', axiosConfig);
+            const response = await axiosInstance.get('/users/lotes/', axiosConfig);
             
             // Filtrar solo lotes con estado LIMPIO
             const lotesLimpios = response.data.filter(lote => lote.estado === 'LIMPIO');
@@ -202,7 +202,7 @@ const SeparacionColores = () => {
             console.log('Enviando datos de separación:', datosEnvio);
 
             const response = await axiosInstance.post(
-                'http://localhost:8000/api/users/lotes/procesar-separacion-colores/',
+                '/users/lotes/procesar-separacion-colores/',
                 datosEnvio,
                 axiosConfig
             );
@@ -255,7 +255,7 @@ const SeparacionColores = () => {
             };
 
             await axiosInstance.post(
-                'http://localhost:8000/api/users/lotes/enviar-recepcion-final/',
+                '/users/lotes/enviar-recepcion-final/',
                 datosEnvio,
                 axiosConfig
             );

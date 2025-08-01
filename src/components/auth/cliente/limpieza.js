@@ -68,8 +68,8 @@ const Limpieza = () => {
         setLoading(true);
         try {
             const [lotesRes, orgRes] = await Promise.all([
-                axiosInstance.get('http://localhost:8000/api/users/lotes/'),
-                axiosInstance.get('http://localhost:8000/api/users/organizaciones/')
+                axiosInstance.get('/users/lotes/'),
+                axiosInstance.get('/users/organizaciones/')
             ]);
 
             // Filtrar lotes por estado para las diferentes pestañas
@@ -164,7 +164,7 @@ const Limpieza = () => {
             };
             
             const response = await axiosInstance.post(
-                'http://localhost:8000/api/users/lotes/procesar-limpieza/',
+                '/users/lotes/procesar-limpieza/',
                 dataToSend
             );
             
@@ -192,7 +192,7 @@ const Limpieza = () => {
             };
             
             const response = await axiosInstance.post(
-                'http://localhost:8000/api/users/lotes/procesar-separacion-colores/',
+                '/users/lotes/procesar-separacion-colores/',
                 dataToSend
             );
             

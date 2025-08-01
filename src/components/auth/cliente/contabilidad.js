@@ -60,12 +60,12 @@ const ContabilidadCostos = () => {
         setLoading(true);
         try {
             const [procesosRes, descargasRes, maquinariaRes, insumosRes, tareasInsumoRes, tareasProcesoRes] = await Promise.all([
-                axiosInstance.get('http://localhost:8000/api/users/procesos/'),
-                axiosInstance.get('http://localhost:8000/api/users/descargas/'),
-                axiosInstance.get('http://localhost:8000/api/users/uso-maquinaria/'),
-                axiosInstance.get('http://localhost:8000/api/users/insumos/'),
-                axiosInstance.get('http://localhost:8000/api/users/tareas/'),
-                axiosInstance.get('http://localhost:8000/api/users/procesos/tareas/')
+                axiosInstance.get('/users/procesos/'),
+                axiosInstance.get('/users/descargas/'),
+                axiosInstance.get('/users/uso-maquinaria/'),
+                axiosInstance.get('/users/insumos/'),
+                axiosInstance.get('/users/tareas/'),
+                axiosInstance.get('/users/procesos/tareas/')
             ]);
             
             setLotes(procesosRes.data); // Ahora contiene procesos
