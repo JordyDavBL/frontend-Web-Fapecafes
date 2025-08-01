@@ -137,12 +137,12 @@ const Registros = () => {
             // Para secretarias, cargar organizaciones, lotes, estadísticas e insumos
             if (isSecretariaUser) {
                 const [orgRes, lotesRes, statsRes, insumosRes, tiposRes, estadisticasInventarioRes] = await Promise.all([
-                    axiosInstance.get('http://localhost:8000/api/users/organizaciones/'),
-                    axiosInstance.get('http://localhost:8000/api/users/lotes/'),
-                    axiosInstance.get('http://localhost:8000/api/users/estadisticas/'),
-                    axiosInstance.get('http://localhost:8000/api/users/insumos/'),
-                    axiosInstance.get('http://localhost:8000/api/users/tipos-insumos/'),
-                    axiosInstance.get('http://localhost:8000/api/users/inventario/estadisticas/')
+                    axiosInstance.get('/users/organizaciones/'),
+                    axiosInstance.get('/users/lotes/'),
+                    axiosInstance.get('/users/estadisticas/'),
+                    axiosInstance.get('/users/insumos/'),
+                    axiosInstance.get('/users/tipos-insumos/'),
+                    axiosInstance.get('/users/inventario/estadisticas/')
                 ]);
                 
                 setOrganizaciones(orgRes.data);
@@ -181,13 +181,13 @@ const Registros = () => {
             } else {
                 // Para administradores y empleados, cargar todos los datos incluyendo insumos
                 const [lotesRes, orgRes, muestrasRes, statsRes, insumosRes, tiposRes, estadisticasInventarioRes] = await Promise.all([
-                    axiosInstance.get('http://localhost:8000/api/users/lotes/'),
-                    axiosInstance.get('http://localhost:8000/api/users/organizaciones/'),
-                    axiosInstance.get('http://localhost:8000/api/users/muestras/'),
-                    axiosInstance.get('http://localhost:8000/api/users/estadisticas/'),
-                    axiosInstance.get('http://localhost:8000/api/users/insumos/'),
-                    axiosInstance.get('http://localhost:8000/api/users/tipos-insumos/'),
-                    axiosInstance.get('http://localhost:8000/api/users/inventario/estadisticas/')
+                    axiosInstance.get('/users/lotes/'),
+                    axiosInstance.get('/users/organizaciones/'),
+                    axiosInstance.get('/users/muestras/'),
+                    axiosInstance.get('/users/estadisticas/'),
+                    axiosInstance.get('/users/insumos/'),
+                    axiosInstance.get('/users/tipos-insumos/'),
+                    axiosInstance.get('/users/inventario/estadisticas/')
                 ]);
                 
                 setLotes(lotesRes.data);
@@ -432,7 +432,7 @@ const Registros = () => {
     const crearOrganizacion = async (e) => {
         e.preventDefault();
         try {
-            await axiosInstance.post('http://localhost:8000/api/users/organizaciones/', formData);
+            await axiosInstance.post('/users/organizaciones/', formData);
             alert('Organización creada exitosamente');
             cerrarModal();
             cargarDatos();
@@ -448,7 +448,7 @@ const Registros = () => {
     const crearLoteConPropietarios = async (loteData) => {
         try {
             console.log('Enviando datos del lote:', loteData);
-            await axiosInstance.post('http://localhost:8000/api/users/lotes/crear-con-propietarios/', loteData);
+            await axiosInstance.post('/users/lotes/crear-con-propietarios/', loteData);
             alert('Lote creado exitosamente con todos los propietarios');
             cerrarModal();
             cargarDatos();
@@ -490,7 +490,7 @@ const Registros = () => {
     const seleccionarMuestras = async (datosSeleccion) => {
         try {
             console.log('Enviando datos de selección de muestras:', datosSeleccion);
-            const response = await axiosInstance.post('http://localhost:8000/api/users/muestras/seleccionar/', datosSeleccion);
+            const response = await axiosInstance.post('/users/muestras/seleccionar/', datosSeleccion);
             console.log('Respuesta del servidor:', response.data);
             alert('Muestras seleccionadas exitosamente. El lote está ahora en proceso de análisis.');
             cerrarModal();
@@ -534,7 +534,7 @@ const Registros = () => {
         e.preventDefault();
         try {
             const response = await axiosInstance.post(
-                `http://localhost:8000/api/users/muestras/${selectedMuestra.id}/resultado/`,
+                `/users/muestras/${selectedMuestra.id}/resultado/`,
                 formData
             );
             
@@ -637,7 +637,7 @@ const Registros = () => {
     const crearSegundoMuestreo = async (loteId, muestrasContaminadasIds) => {
         try {
             const response = await axiosInstance.post(
-                'http://localhost:8000/api/users/muestras/segundo-muestreo/',
+                '/users/muestras/segundo-muestreo/',
                 {
                     lote_id: loteId,
                     muestras_contaminadas: muestrasContaminadasIds
@@ -658,7 +658,7 @@ const Registros = () => {
     const generarReporteSeparacion = async (loteId) => {
         try {
             setLoadingSeparacion(true);
-            const response = await axiosInstance.get(`http://localhost:8000/api/users/lotes/${loteId}/reporte-separacion/`);
+            const response = await axiosInstance.get(`/users/lotes/${loteId}/reporte-separacion/`);
             
             setDatosParaSeparacion(response.data);
             setShowSeparacionModal(true);
@@ -681,7 +681,7 @@ const Registros = () => {
     const enviarParteLimpiaALimpieza = async (loteId) => {
         try {
             const response = await axiosInstance.post(
-                `http://localhost:8000/api/users/lotes/${loteId}/enviar-parte-limpia-limpieza/`,
+                `/users/lotes/${loteId}/enviar-parte-limpia-limpieza/`,
                 {}
             );
             
@@ -727,7 +727,7 @@ ${data.detalles.propietarios_incluidos ? data.detalles.propietarios_incluidos.ma
         e.preventDefault();
         try {
             const response = await axiosInstance.post(
-                `http://localhost:8000/api/users/lotes/${selectedLote.id}/procesar-limpieza/`,
+                `/users/lotes/${selectedLote.id}/procesar-limpieza/`,
                 formData
             );
             
@@ -776,7 +776,7 @@ ${data.detalles.propietarios_incluidos ? data.detalles.propietarios_incluidos.ma
             };
 
             const response = await axiosInstance.post(
-                `http://localhost:8000/api/users/lotes/procesar-separacion-colores/`,
+                `/users/lotes/procesar-separacion-colores/`,
                 datosEnvio
             );
             
@@ -809,7 +809,7 @@ ${data.detalles.propietarios_incluidos ? data.detalles.propietarios_incluidos.ma
             };
 
             const response = await axiosInstance.post(
-                `http://localhost:8000/api/users/lotes/enviar-recepcion-final/`,
+                `/users/lotes/enviar-recepcion-final/`,
                 datosEnvio
             );
             
