@@ -26,12 +26,13 @@ const Actividades = () => {
                 const userData = await getCurrentUser();
                 const adminCheck = await isAdmin();
                 const empleadoCheck = userData?.rol === 'EMPLEADO';
+                const secretariaCheck = userData?.rol === 'SECRETARIA';
                 
-                if (userData && (adminCheck || empleadoCheck)) {
+                if (userData && (adminCheck || empleadoCheck || secretariaCheck)) {
                     setIsAuthenticated(true);
                     setUserRole(userData.rol);
                 } else {
-                    alert('Acceso denegado. Esta sección requiere permisos de administrador o empleado.');
+                    alert('Acceso denegado. Esta sección requiere permisos de administrador, empleado o secretaria.');
                     navigate('/login');
                 }
             } catch (error) {
