@@ -65,7 +65,7 @@ const SeparacionColores = () => {
             const axiosConfig = getAxiosConfig();
             console.log('Cargando lotes con configuración:', axiosConfig);
             
-            const response = await axiosInstance.get('/users/lotes/', axiosConfig);
+            const response = await axiosInstance.get('/api/users/lotes/', axiosConfig);
             
             // Filtrar solo lotes con estado LIMPIO
             const lotesLimpios = response.data.filter(lote => lote.estado === 'LIMPIO');
