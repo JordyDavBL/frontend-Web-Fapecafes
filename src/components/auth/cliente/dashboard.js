@@ -79,12 +79,12 @@ const Dashboard = () => {
   const cargarProcesoActual = async () => {
     try {
       // Primero intentar obtener procesos EN_PROCESO
-      let response = await axiosInstance.get('/procesos/?estado=EN_PROCESO&ordering=-fecha_inicio');
+      let response = await axiosInstance.get('/users/procesos/?estado=EN_PROCESO&ordering=-fecha_inicio');
       let procesos = response.data.results || response.data;
       
       // Si no hay procesos EN_PROCESO, buscar INICIADO
       if (!procesos || procesos.length === 0) {
-        response = await axiosInstance.get('/procesos/?estado=INICIADO&ordering=-fecha_inicio');
+        response = await axiosInstance.get('/users/procesos/?estado=INICIADO&ordering=-fecha_inicio');
         procesos = response.data.results || response.data;
       }
 
@@ -93,7 +93,7 @@ const Dashboard = () => {
         console.log('Proceso actual cargado:', procesos[0]);
       } else {
         // Si no hay procesos activos, buscar el más reciente de cualquier estado
-        const responseRecientes = await axiosInstance.get('/procesos/?ordering=-fecha_inicio&limit=1');
+        const responseRecientes = await axiosInstance.get('/users/procesos/?ordering=-fecha_inicio&limit=1');
         const procesosRecientes = responseRecientes.data.results || responseRecientes.data;
         if (procesosRecientes && procesosRecientes.length > 0) {
           setProcesoActual(procesosRecientes[0]);
@@ -120,7 +120,7 @@ const Dashboard = () => {
 
     setActualizandoProceso(true);
     try {
-      const response = await axiosInstance.post(`/procesos/${procesoActual.id}/avanzar-fase/`);
+      const response = await axiosInstance.post(`/users/procesos/${procesoActual.id}/avanzar-fase/`);
 
       if (response.data.proceso) {
         setProcesoActual(response.data.proceso);
@@ -149,7 +149,7 @@ const Dashboard = () => {
 
     setActualizandoProceso(true);
     try {
-      const response = await axiosInstance.patch(`/procesos/${procesoActual.id}/`, {
+      const response = await axiosInstance.patch(`/users/procesos/${procesoActual.id}/`, {
         estado: 'COMPLETADO',
         fecha_fin_real: new Date().toISOString(),
         progreso: 100

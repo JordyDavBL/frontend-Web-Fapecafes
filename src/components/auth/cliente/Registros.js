@@ -389,7 +389,7 @@ const Registros = () => {
             };
 
             // URL correcta sin el prefijo /users/ duplicado
-            await axiosInstance.post(`/insumos/${insumoId}/actualizar-stock/`, datos, axiosConfig);
+            await axiosInstance.post(`/users/insumos/${insumoId}/actualizar-stock/`, datos, axiosConfig);
             
             setMensaje('Stock actualizado exitosamente');
             await cargarDatos();

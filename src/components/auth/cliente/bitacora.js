@@ -113,7 +113,7 @@ const Bitacora = () => {
             if (filtros.fecha_hasta) params.append('fecha_hasta', filtros.fecha_hasta);
             
             const response = await axiosInstance.get(
-                `/bitacora/?${params.toString()}`
+                `/users/bitacora/?${params.toString()}`
             );
             
             setRegistros(response.data.results || response.data);
@@ -134,7 +134,7 @@ const Bitacora = () => {
     const cargarEstadisticas = async () => {
         try {
             const response = await axiosInstance.get(
-                '/bitacora/estadisticas/'
+                'users/bitacora/estadisticas/'
             );
             setEstadisticas(response.data);
         } catch (error) {

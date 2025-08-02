@@ -55,7 +55,7 @@ const Actividades = () => {
     const cargarProcesosCompletados = async () => {
         setLoading(true);
         try {
-            const response = await axiosInstance.get('/procesos/?estado=COMPLETADO&ordering=-fecha_inicio');
+            const response = await axiosInstance.get('/users/procesos/?estado=COMPLETADO&ordering=-fecha_inicio');
             const procesosData = response.data.results || response.data;
             setProcesosCompletados(procesosData);
             console.log('Procesos completados cargados:', procesosData);
@@ -75,7 +75,7 @@ const Actividades = () => {
         
         try {
             // Cargar tareas del proceso específico
-            const response = await axiosInstance.get(`/procesos/tareas/?proceso_id=${proceso.id}&ordering=-fecha_registro`);
+            const response = await axiosInstance.get(`/users/procesos/tareas/?proceso_id=${proceso.id}&ordering=-fecha_registro`);
             const tareasData = response.data.results || response.data;
             setTareasDelProceso(tareasData);
             console.log('Tareas del proceso cargadas:', tareasData);

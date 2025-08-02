@@ -368,7 +368,7 @@ const AnalisisMuestra = () => {
 
             console.log('Enviando datos de tarea:', datosTarea);
             
-            const response = await axiosInstance.post('/tareas/', datosTarea);
+            const response = await axiosInstance.post('/users/tareas/', datosTarea);
             
             console.log('Tarea creada exitosamente:', response.data);
             alert('✅ Tarea registrada exitosamente');

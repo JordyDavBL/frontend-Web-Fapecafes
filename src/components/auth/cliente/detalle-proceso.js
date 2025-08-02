@@ -266,7 +266,7 @@ Cálculo realizado el ${new Date().toLocaleString('es-ES')}`
 
     const cargarProceso = async () => {
         try {
-            const response = await axiosInstance.get(`/procesos/${id}/`);
+            const response = await axiosInstance.get(`/users/procesos/${id}/`);
             setProceso(response.data);
         } catch (error) {
             console.error('Error al cargar proceso:', error);
@@ -277,7 +277,7 @@ Cálculo realizado el ${new Date().toLocaleString('es-ES')}`
 
     const cargarInsumos = async () => {
         try {
-            const response = await axiosInstance.get('/insumos/');
+            const response = await axiosInstance.get('/users/insumos/');
             const insumosActivos = response.data.filter(insumo => insumo.activo);
             setInsumosDisponibles(insumosActivos);
             console.log('Insumos disponibles cargados exitosamente:', insumosActivos.length);
@@ -610,7 +610,7 @@ Cálculo realizado el ${new Date().toLocaleString('es-ES')}`
                     console.log(`Enviando tarea ${i + 1}/${tareasLotes.length}:`, tarea);
                     
                     try {
-                        const response = await axiosInstance.post('/tareas/', tarea);
+                        const response = await axiosInstance.post('/users/tareas/', tarea);
                         console.log(`✅ Tarea ${i + 1} creada exitosamente:`, response.data);
                         resultados.push(response.data);
                     } catch (error) {
@@ -644,7 +644,7 @@ Cálculo realizado el ${new Date().toLocaleString('es-ES')}`
                     canteado_realizado: true
                 };
 
-                const responseTareaProceso = await axiosInstance.post('/procesos/tareas/', tareaProceso);
+                const responseTareaProceso = await axiosInstance.post('/users/procesos/tareas/', tareaProceso);
                 console.log('TareaProceso de pilado creada exitosamente:', responseTareaProceso.data);
             } else {
                 throw new Error('No se encontraron lotes en el proceso');
@@ -753,7 +753,7 @@ Cálculo realizado el ${new Date().toLocaleString('es-ES')}`
                     console.log(`Enviando tarea de clasificación ${i + 1}/${tareasLotes.length}:`, tarea);
                     
                     try {
-                        const response = await axiosInstance.post('/tareas/', tarea);
+                        const response = await axiosInstance.post('/users/tareas/', tarea);
                         console.log(`✅ Tarea clasificación ${i + 1} creada exitosamente:`, response.data);
                         resultados.push(response.data);
                     } catch (error) {
@@ -789,7 +789,7 @@ Cálculo realizado el ${new Date().toLocaleString('es-ES')}`
                     completada: true
                 };
 
-                const responseTareaProceso = await axiosInstance.post('/procesos/tareas/', tareaProceso);
+                const responseTareaProceso = await axiosInstance.post('/users/procesos/tareas/', tareaProceso);
                 console.log('TareaProceso de clasificación creada exitosamente:', responseTareaProceso.data);
             } else {
                 throw new Error('No se encontraron lotes en el proceso');
@@ -857,7 +857,7 @@ Cálculo realizado el ${new Date().toLocaleString('es-ES')}`
                 // Prioridad 3: intentar recargar el proceso desde el servidor
                 console.log('⚠️ No se encontraron lotes en el proceso actual. Recargando desde servidor...');
                 try {
-                    const procesoActualizado = await axiosInstance.get(`/procesos/${proceso.id}/`);
+                    const procesoActualizado = await axiosInstance.get(`/users/procesos/${proceso.id}/`);
                     const procesoFresco = procesoActualizado.data;
                     
                     console.log('DEBUG - Proceso recargado:', procesoFresco);
@@ -965,7 +965,7 @@ Por favor:
             // Crear todas las tareas
             const promesasTareas = tareasLotes.map((tareaLote, index) => {
                 console.log(`DEBUG - Enviando tarea ${index} al servidor:`, tareaLote);
-                return axiosInstance.post('/tareas/', tareaLote);
+                return axiosInstance.post('/users/tareas/', tareaLote);
             });
 
             const resultados = await Promise.all(promesasTareas);
@@ -986,7 +986,7 @@ Por favor:
                 completada: true
             };
 
-            const responseTareaProceso = await axiosInstance.post('/procesos/tareas/', tareaProceso);
+            const responseTareaProceso = await axiosInstance.post('/users/procesos/tareas/', tareaProceso);
             console.log('TareaProceso de densidad 1 creada exitosamente:', responseTareaProceso.data);
 
             alert(`✅ Tarea de densidad 1 guardada exitosamente para ${lotesDisponibles.length} lotes`);
@@ -1112,7 +1112,7 @@ Por favor:
                 }
 
                 const promesasTareas = tareasLotes.map(tareaLote =>
-                    axiosInstance.post('/tareas/', tareaLote)
+                    axiosInstance.post('/users/tareas/', tareaLote)
                 );
 
                 await Promise.all(promesasTareas);
@@ -1132,7 +1132,7 @@ Por favor:
                     completada: true
                 };
 
-                const responseTareaProceso = await axiosInstance.post('/procesos/tareas/', tareaProceso);
+                const responseTareaProceso = await axiosInstance.post('/users/procesos/tareas/', tareaProceso);
                 console.log('TareaProceso de densidad 2 creada exitosamente:', responseTareaProceso.data);
             }
 
@@ -1255,7 +1255,7 @@ Por favor:
                 }
 
                 const promesasTareas = tareasLotes.map(tareaLote =>
-                    axiosInstance.post('/tareas/', tareaLote)
+                    axiosInstance.post('/users/tareas/', tareaLote)
                 );
 
                 await Promise.all(promesasTareas);
@@ -1275,7 +1275,7 @@ Por favor:
                     completada: true
                 };
 
-                const responseTareaProceso = await axiosInstance.post('/procesos/tareas/', tareaProceso);
+                const responseTareaProceso = await axiosInstance.post('/users/procesos/tareas/', tareaProceso);
                 console.log('TareaProceso de color creada exitosamente:', responseTareaProceso.data);
             } else {
                 throw new Error('No se encontraron lotes en el proceso');
@@ -1421,7 +1421,7 @@ Por favor:
                     console.log(`\nEnviando tarea ${i + 1}/${tareasLotes.length}:`, tarea);
                     
                     try {
-                        const resultado = await axiosInstance.post('/tareas/', tarea);
+                        const resultado = await axiosInstance.post('/users/tareas/', tarea);
                         console.log(`✓ Tarea ${i + 1} creada exitosamente:`, resultado.data);
                         resultados.push(resultado);
                     } catch (error) {
@@ -1453,7 +1453,7 @@ Por favor:
 
                 console.log('Datos de TareaProceso:', tareaProceso);
                 
-                const responseTareaProceso = await axiosInstance.post('/procesos/tareas/', tareaProceso);
+                const responseTareaProceso = await axiosInstance.post('/users/procesos/tareas/', tareaProceso);
                 console.log('✅ TareaProceso de empaquetado creada exitosamente:', responseTareaProceso.data);
             } else {
                 throw new Error('No se encontraron lotes en el proceso');
@@ -1544,11 +1544,11 @@ Por favor:
             console.log('Datos de empaquetado a guardar:', datosEmpaquetado);
 
             // 1. Guardar datos específicos de empaquetado usando el nuevo endpoint
-            const response = await axiosInstance.post(`/procesos/${proceso.id}/guardar-empaquetado/`, datosEmpaquetado);
+            const response = await axiosInstance.post(`/users/procesos/${proceso.id}/guardar-empaquetado/`, datosEmpaquetado);
             console.log('✅ Datos de empaquetado guardados en la base de datos:', response.data);
 
             // 2. Actualizar el proceso para marcarlo como completado
-            const updateResponse = await axiosInstance.patch(`/procesos/${proceso.id}/`, {
+            const updateResponse = await axiosInstance.patch(`/users/procesos/${proceso.id}/`, {
                 estado: 'COMPLETADO',
                 fase_actual: 'EMPAQUE',
                 progreso: 100,
@@ -1616,11 +1616,11 @@ Por favor:
             setLoading(true);
 
             // 1. Guardar datos específicos del pilado usando el nuevo endpoint
-            const response = await axiosInstance.post(`/procesos/${proceso.id}/guardar-pilado/`, piladoData);
+            const response = await axiosInstance.post(`/users/procesos/${proceso.id}/guardar-pilado/`, piladoData);
             console.log('✅ Datos de pilado guardados en la base de datos:', response.data);
 
             // 2. Actualizar el proceso
-            const updateResponse = await axiosInstance.patch(`/procesos/${proceso.id}/`, {
+            const updateResponse = await axiosInstance.patch(`/users/procesos/${proceso.id}/`, {
                 fase_actual: 'CLASIFICACION',
                 progreso: 20,
                 notas_tecnicas: {
@@ -1657,11 +1657,11 @@ Por favor:
             setLoading(true);
 
             // 1. Guardar datos específicos de la clasificación usando el nuevo endpoint
-            const response = await axiosInstance.post(`/procesos/${proceso.id}/guardar-clasificacion/`, clasificacionData);
+            const response = await axiosInstance.post(`/users/procesos/${proceso.id}/guardar-clasificacion/`, clasificacionData);
             console.log('✅ Datos de clasificación guardados en la base de datos:', response.data);
 
             // 2. Actualizar el proceso
-            const updateResponse = await axiosInstance.patch(`/procesos/${proceso.id}/`, {
+            const updateResponse = await axiosInstance.patch(`/users/procesos/${proceso.id}/`, {
                 fase_actual: 'DENSIDAD',
                 progreso: 40,
                 notas_tecnicas: {
@@ -1698,11 +1698,11 @@ Por favor:
             setLoading(true);
 
             // 1. Guardar datos específicos de densidad 1 usando el nuevo endpoint
-            const response = await axiosInstance.post(`/procesos/${proceso.id}/guardar-densidad-1/`, densidadData);
+            const response = await axiosInstance.post(`/users/procesos/${proceso.id}/guardar-densidad-1/`, densidadData);
             console.log('✅ Datos de densidad 1 guardados en la base de datos:', response.data);
 
             // 2. Actualizar el proceso
-            const updateResponse = await axiosInstance.patch(`/procesos/${proceso.id}/`, {
+            const updateResponse = await axiosInstance.patch(`/users/procesos/${proceso.id}/`, {
                 notas_tecnicas: {
                     ...proceso.notas_tecnicas,
                     DENSIDAD_1: [
@@ -1734,11 +1734,11 @@ Por favor:
             setLoading(true);
 
             // 1. Guardar datos específicos de densidad 2 usando el nuevo endpoint
-            const response = await axiosInstance.post(`/procesos/${proceso.id}/guardar-densidad-2/`, densimetria2Data);
+            const response = await axiosInstance.post(`/users/procesos/${proceso.id}/guardar-densidad-2/`, densimetria2Data);
             console.log('✅ Datos de densidad 2 guardados en la base de datos:', response.data);
 
             // 2. Actualizar el proceso
-            const updateResponse = await axiosInstance.patch(`/procesos/${proceso.id}/`, {
+            const updateResponse = await axiosInstance.patch(`/users/procesos/${proceso.id}/`, {
                 fase_actual: 'COLOR',
                 progreso: 60,
                 notas_tecnicas: {
@@ -1798,11 +1798,11 @@ Por favor:
             };
 
             // 1. Guardar datos específicos de color usando el nuevo endpoint
-            const response = await axiosInstance.post(`/procesos/${proceso.id}/guardar-color/`, datosColorCompletos);
+            const response = await axiosInstance.post(`/users/procesos/${proceso.id}/guardar-color/`, datosColorCompletos);
             console.log('✅ Datos de color guardados en la base de datos:', response.data);
 
             // 2. Actualizar el proceso
-            const updateResponse = await axiosInstance.patch(`/procesos/${proceso.id}/`, {
+            const updateResponse = await axiosInstance.patch(`/users/procesos/${proceso.id}/`, {
                 fase_actual: 'EMPAQUE',
                 progreso: 80,
                 notas_tecnicas: {

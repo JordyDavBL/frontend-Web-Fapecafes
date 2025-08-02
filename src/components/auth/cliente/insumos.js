@@ -97,7 +97,7 @@ const Insumos = () => {
     const cargarInsumos = async () => {
         try {
             const axiosConfig = getAxiosConfig();
-            const response = await axiosInstance.get('/insumos/', axiosConfig);
+            const response = await axiosInstance.get('/users/insumos/', axiosConfig);
             setInsumos(response.data);
         } catch (error) {
             console.error('Error al cargar insumos:', error);
@@ -111,7 +111,7 @@ const Insumos = () => {
     const cargarTiposInsumo = async () => {
         try {
             const axiosConfig = getAxiosConfig();
-            const response = await axiosInstance.get('/tipos-insumos/', axiosConfig);
+            const response = await axiosInstance.get('/users/tipos-insumos/', axiosConfig);
             
             if (response.data.success) {
                 setTiposInsumo(response.data.tipos_disponibles || []);
@@ -196,7 +196,7 @@ const Insumos = () => {
     const cargarLotesDisponibles = async () => {
         try {
             const axiosConfig = getAxiosConfig();
-            const response = await axiosInstance.get('/lotes-disponibles-descarga/', axiosConfig);
+            const response = await axiosInstance.get('/users/lotes-disponibles-descarga/', axiosConfig);
             
             // Manejar tanto formato de array directo como objeto con results
             if (Array.isArray(response.data)) {
@@ -219,7 +219,7 @@ const Insumos = () => {
     const cargarEstadisticasInventario = async () => {
         try {
             const axiosConfig = getAxiosConfig();
-            const response = await axiosInstance.get('/inventario/estadisticas/', axiosConfig);
+            const response = await axiosInstance.get('/users/inventario/estadisticas/', axiosConfig);
             setEstadisticasInventario(response.data);
         } catch (error) {
             console.error('Error al cargar estadísticas de inventario:', error);
@@ -231,7 +231,7 @@ const Insumos = () => {
         
         try {
             const axiosConfig = getAxiosConfig();
-            const response = await axiosInstance.get('/insumos/', axiosConfig);
+            const response = await axiosInstance.get('/users/insumos/', axiosConfig);
             const insumos = Array.isArray(response.data) ? response.data : response.data.results || [];
             
             // Verificar si el código ya existe
@@ -279,7 +279,7 @@ const Insumos = () => {
 
             console.log('Datos del insumo a enviar:', datos);
 
-            await axiosInstance.post('/insumos/', datos, axiosConfig);
+            await axiosInstance.post('/users/insumos/', datos, axiosConfig);
             
             setMensaje(`¡Insumo "${datos.nombre}" registrado exitosamente con código "${datos.codigo}"!`);
             setInsumoForm({
@@ -386,7 +386,7 @@ const Insumos = () => {
                 tipo_maquinaria: registroForm.tipo_maquinaria || null
             };
 
-            await axiosInstance.post('/uso-maquinaria/', datos, axiosConfig);
+            await axiosInstance.post('/users/uso-maquinaria/', datos, axiosConfig);
             
             setMensaje('Registro de uso de insumo guardado exitosamente');
             setRegistroForm({
@@ -450,7 +450,7 @@ const Insumos = () => {
         try {
             setCargando(true);
             const axiosConfig = getAxiosConfig();
-            await axiosInstance.delete(`/insumos/${id}/`, axiosConfig);
+            await axiosInstance.delete(`/users/insumos/${id}/`, axiosConfig);
             
             setMensaje('Insumo eliminado exitosamente');
             await cargarInsumos();
@@ -475,7 +475,7 @@ const Insumos = () => {
                 observaciones: observaciones
             };
 
-            await axiosInstance.post(`/insumos/${insumoId}/actualizar-stock/`, datos, axiosConfig);
+            await axiosInstance.post(`/users/insumos/${insumoId}/actualizar-stock/`, datos, axiosConfig);
             
             setMensaje('Stock actualizado exitosamente');
             await cargarInsumos();
