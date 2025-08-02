@@ -86,9 +86,9 @@ const Recepcion = () => {
         setLoading(true);
         try {
             const [lotesRes, orgRes, lotesRecepcionRes] = await Promise.all([
-                axiosInstance.get('/users/lotes/'),
-                axiosInstance.get('/users/organizaciones/'),
-                axiosInstance.get('/users/lotes/listos-recepcion-final/')
+                axiosInstance.get('/api/users/lotes/'),
+                axiosInstance.get('/api/users/organizaciones/'),
+                axiosInstance.get('/api/users/lotes/listos-recepcion-final/')
             ]);
             
             // Combinar lotes normales con lotes listos para recepción

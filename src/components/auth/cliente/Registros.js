@@ -137,12 +137,12 @@ const Registros = () => {
             // Para secretarias, cargar organizaciones, lotes, estadísticas e insumos
             if (isSecretariaUser) {
                 const [orgRes, lotesRes, statsRes, insumosRes, tiposRes, estadisticasInventarioRes] = await Promise.all([
-                    axiosInstance.get('/users/organizaciones/'),
-                    axiosInstance.get('/users/lotes/'),
-                    axiosInstance.get('/users/estadisticas/'),
-                    axiosInstance.get('/users/insumos/'),
-                    axiosInstance.get('/users/tipos-insumos/'),
-                    axiosInstance.get('/users/inventario/estadisticas/')
+                    axiosInstance.get('/api/users/organizaciones/'),
+                    axiosInstance.get('/api/users/lotes/'),
+                    axiosInstance.get('/api/users/estadisticas/'),
+                    axiosInstance.get('/api/users/insumos/'),
+                    axiosInstance.get('/api/users/tipos-insumos/'),
+                    axiosInstance.get('/api/users/inventario/estadisticas/')
                 ]);
                 
                 setOrganizaciones(orgRes.data);
