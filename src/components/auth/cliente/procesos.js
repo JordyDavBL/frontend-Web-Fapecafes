@@ -64,8 +64,8 @@ const Procesos = () => {
         try {
             // Cargar procesos y lotes disponibles en paralelo
             const [procesosResponse, lotesResponse] = await Promise.all([
-                axiosInstance.get('/api/users/procesos/'),
-                axiosInstance.get('/api/users/procesos/lotes-disponibles/')
+                axiosInstance.get('/procesos/'),
+                axiosInstance.get('/procesos/lotes-disponibles/')
             ]);
             
             const procesosData = procesosResponse.data.results || procesosResponse.data;
