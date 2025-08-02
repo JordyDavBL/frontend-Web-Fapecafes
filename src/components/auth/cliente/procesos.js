@@ -65,7 +65,7 @@ const Procesos = () => {
             // Cargar procesos y lotes disponibles en paralelo
             const [procesosResponse, lotesResponse] = await Promise.all([
                 axiosInstance.get('/api/users/procesos/'),
-                axiosInstance.get('/api/users/procesos/lotes-disponibles/')
+                axiosInstance.get('/users/procesos/lotes-disponibles/')
             ]);
             
             const procesosData = procesosResponse.data.results || procesosResponse.data;
@@ -86,7 +86,7 @@ const Procesos = () => {
             // ✅ INCLUIR LOTES CON SEPARACIÓN APLICADA
             // Filtrar lotes disponibles para procesos (APROBADO y SEPARACION_APLICADA)
             const lotesAprobadosData = lotesData.filter(lote => 
-                lote.estado === 'APROBADO' || lote.estado === 'SEPARACION_APLICADA' || lote.estado === 'EN PROCESO'
+                lote.estado === 'APROBADO' || lote.estado === 'SEPARACION_APLICADA' || lote.estado === 'EN_PROCESO'
             );
             setLotesAprobados(lotesAprobadosData);
             
