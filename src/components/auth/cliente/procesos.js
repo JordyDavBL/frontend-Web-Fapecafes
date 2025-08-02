@@ -85,7 +85,9 @@ const Procesos = () => {
             
             // ✅ INCLUIR LOTES CON SEPARACIÓN APLICADA
             // Filtrar lotes disponibles para procesos (APROBADO y SEPARACION_APLICADA)
-            const lotesAprobadosData = lotesData.filter(lote => lote.estado === 'APROBADO' || lote.estado === 'SEPARACION_APLICADA');
+            const lotesAprobadosData = lotesData.filter(lote => 
+                lote.estado === 'APROBADO' || lote.estado === 'SEPARACION_APLICADA'
+            );
             setLotesAprobados(lotesAprobadosData);
             
             console.log('Lotes disponibles:', lotesAprobadosData.map(l => ({
