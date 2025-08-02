@@ -62,7 +62,7 @@ const Descarga = () => {
 
     const cargarInsumosDisponibles = async () => {
         try {
-            const response = await axiosInstance.get('/insumos/');
+            const response = await axiosInstance.get('users/insumos/');
             setInsumosDisponibles(response.data.results || response.data);
         } catch (error) {
             console.error('Error al cargar insumos:', error);
@@ -80,7 +80,7 @@ const Descarga = () => {
 
     const cargarTareasCompletadas = async () => {
         try {
-            const response = await axiosInstance.get('/descargas/');
+            const response = await axiosInstance.get('/users/descargas/');
             setTareasCompletadas(response.data.results || response.data);
         } catch (error) {
             console.error('Error al cargar tareas completadas:', error);
@@ -136,7 +136,7 @@ const Descarga = () => {
             };
 
             console.log('Datos a enviar:', datosDescarga);
-            const response = await axiosInstance.post('/descargas/', datosDescarga);
+            const response = await axiosInstance.post('/users/descargas/', datosDescarga);
             
             alert('✅ Tarea de descarga registrada exitosamente');
             limpiarFormulario();
