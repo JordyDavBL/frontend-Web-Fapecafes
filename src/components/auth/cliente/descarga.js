@@ -71,7 +71,7 @@ const Descarga = () => {
 
     const cargarLotesDisponibles = async () => {
         try {
-            const response = await axiosInstance.get('/lotes-disponibles-descarga/');
+            const response = await axiosInstance.get('/users/lotes-disponibles-descarga/');
             setLotesDisponibles(response.data.results || []);
         } catch (error) {
             console.error('Error al cargar lotes disponibles:', error);
