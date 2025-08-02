@@ -55,9 +55,9 @@ const Personal = () => {
         try {
             // Cargar propietarios maestros, lotes y organizaciones
             const [propResponse, lotesResponse, orgResponse] = await Promise.all([
-                axiosInstance.get('/users/propietarios-maestros/'),
-                axiosInstance.get('/users/lotes/'),
-                axiosInstance.get('/users/organizaciones/')
+                axiosInstance.get('/api/users/propietarios-maestros/'),
+                axiosInstance.get('/api/users/lotes/'),
+                axiosInstance.get('/api/users/organizaciones/')
             ]);
             
             const propietariosMaestrosData = propResponse.data.results || propResponse.data;
@@ -127,7 +127,7 @@ const Personal = () => {
     const cargarPropietariosMaestros = async () => {
         setLoading(true);
         try {
-            const response = await axiosInstance.get('/users/propietarios-maestros/');
+            const response = await axiosInstance.get('/api/users/propietarios-maestros/');
             
             // Procesar propietarios maestros para mostrar en la interfaz
             const propietariosMaestrosData = response.data.results || response.data;
@@ -249,7 +249,7 @@ const Personal = () => {
         
         try {
             await axiosInstance.put(
-                `/users/propietarios-maestros/${propietarioEditando.id}/`,
+                `/api/users/propietarios-maestros/${propietarioEditando.id}/`,
                 formEditarPropietario
             );
             
