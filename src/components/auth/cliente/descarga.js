@@ -62,7 +62,7 @@ const Descarga = () => {
 
     const cargarInsumosDisponibles = async () => {
         try {
-            const response = await axiosInstance.get('users/insumos/');
+            const response = await axiosInstance.get('/users/insumos/');
             setInsumosDisponibles(response.data.results || response.data);
         } catch (error) {
             console.error('Error al cargar insumos:', error);
