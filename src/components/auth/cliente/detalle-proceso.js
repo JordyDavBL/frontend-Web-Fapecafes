@@ -266,7 +266,7 @@ Cálculo realizado el ${new Date().toLocaleString('es-ES')}`
 
     const cargarProceso = async () => {
         try {
-            const response = await axiosInstance.get(`/users/procesos/${id}/`);
+            const response = await axiosInstance.get(`/api/users/procesos/${id}/`);
             setProceso(response.data);
         } catch (error) {
             console.error('Error al cargar proceso:', error);
@@ -277,7 +277,7 @@ Cálculo realizado el ${new Date().toLocaleString('es-ES')}`
 
     const cargarInsumos = async () => {
         try {
-            const response = await axiosInstance.get('/users/insumos/');
+            const response = await axiosInstance.get('/api/users/insumos/');
             const insumosActivos = response.data.filter(insumo => insumo.activo);
             setInsumosDisponibles(insumosActivos);
             console.log('Insumos disponibles cargados exitosamente:', insumosActivos.length);
@@ -610,7 +610,7 @@ Cálculo realizado el ${new Date().toLocaleString('es-ES')}`
                     console.log(`Enviando tarea ${i + 1}/${tareasLotes.length}:`, tarea);
                     
                     try {
-                        const response = await axiosInstance.post('/users/tareas/', tarea);
+                        const response = await axiosInstance.post('/api/users/tareas/', tarea);
                         console.log(`✅ Tarea ${i + 1} creada exitosamente:`, response.data);
                         resultados.push(response.data);
                     } catch (error) {
@@ -857,7 +857,7 @@ Cálculo realizado el ${new Date().toLocaleString('es-ES')}`
                 // Prioridad 3: intentar recargar el proceso desde el servidor
                 console.log('⚠️ No se encontraron lotes en el proceso actual. Recargando desde servidor...');
                 try {
-                    const procesoActualizado = await axiosInstance.get(`/users/procesos/${proceso.id}/`);
+                    const procesoActualizado = await axiosInstance.get(`/api/users/procesos/${proceso.id}/`);
                     const procesoFresco = procesoActualizado.data;
                     
                     console.log('DEBUG - Proceso recargado:', procesoFresco);
