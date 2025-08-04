@@ -1718,7 +1718,7 @@ Por favor:
             setProceso(updateResponse.data);
             setDensidadPasos(prev => ({ ...prev, clasificacion_densidad: true }));
 
-            alert('✅ Clasificación por densidad completada y datos guardados. Continúe con densimetría 2');
+            alert('✅ Clasificación por densidad completada y datos guardados. Continúe con densimétrica 2');
 
         } catch (error) {
             console.error('Error al finalizar densidad 1:', error);
