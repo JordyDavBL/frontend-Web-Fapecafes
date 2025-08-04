@@ -157,7 +157,7 @@ const Procesos = () => {
 
             console.log('Creando proceso con datos:', procesoData);
             
-            const response = await axiosInstance.post('/api/users/procesos/', procesoData);
+            const response = await axiosInstance.post('/users/procesos/', procesoData);
             
             console.log('Proceso creado exitosamente:', response.data);
             alert('✅ Proceso creado exitosamente');
