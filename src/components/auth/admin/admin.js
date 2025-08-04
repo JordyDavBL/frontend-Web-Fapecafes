@@ -10,7 +10,7 @@ const AdminComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosInstance.get('/admin/data');
+        const response = await axiosInstance.get('/user/admin/data');
         setData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
