@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Crear una instancia de axios
 const axiosInstance = axios.create({
-  baseURL: 'https://backend-web-fapecafes.onrender.com/api',
+  baseURL: 'https://entorno-backend-fapecafes.onrender.com/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -40,7 +40,7 @@ axiosInstance.interceptors.response.use(
         
         if (refreshToken) {
           // Intentar renovar el token
-          const response = await axios.post('https://backend-web-fapecafes.onrender.com/api/users/token/refresh/', {
+          const response = await axios.post('https://entorno-backend-fapecafes.onrender.com/api/users/token/refresh/', {
             refresh: refreshToken
           });
 

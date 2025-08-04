@@ -43,7 +43,7 @@ export const refreshAccessToken = async () => {
         }
 
         console.log('Intentando renovar token...');
-        const response = await fetch('https://backend-web-fapecafes.onrender.com/api/users/login/refresh/', {
+        const response = await fetch('https://entorno-backend-fapecafes.onrender.com/api/users/login/refresh/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -103,7 +103,7 @@ export const handleAuthError = async (error, navigate) => {
 export const getCurrentUser = async () => {
     try {
         const axiosConfig = getAxiosConfig();
-        const response = await fetch('https://backend-web-fapecafes.onrender.com/api/users/me/', {
+        const response = await fetch('https://entorno-backend-fapecafes.onrender.com/api/users/me/', {
             headers: axiosConfig.headers
         });
         
@@ -123,7 +123,7 @@ export const getCurrentUser = async () => {
             const tokenRenovado = await refreshAccessToken();
             if (tokenRenovado) {
                 // Reintentar con el nuevo token
-                const retryResponse = await fetch('https://backend-web-fapecafes.onrender.com/api/users/me/', {
+                const retryResponse = await fetch('https://entorno-backend-fapecafes.onrender.com/api/users/me/', {
                     headers: getAxiosConfig().headers
                 });
                 if (retryResponse.ok) {
