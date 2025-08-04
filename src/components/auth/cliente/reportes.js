@@ -662,7 +662,7 @@ const Reportes = () => {
                             className={`tab-button ${activeTab === 'lotes' ? 'active' : ''}`}
                             onClick={() => setActiveTab('lotes')}
                         >
-                            Reporte por Proceso
+                            Reporte por Lotes
                         </button>
                         <button 
                             className={`tab-button ${activeTab === 'procesos' ? 'active' : ''}`}

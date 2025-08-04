@@ -2270,7 +2270,7 @@ Por favor:
                                         <div className="step-indicator">
                                             {densidadPasos.densimetria_2 ? '✓' : '2'}
                                         </div>
-                                        <span>Densimetría 2</span>
+                                        <span>Densimétrica 2</span>
                                     </div>
                                 </div>
                             </div>
@@ -2282,7 +2282,7 @@ Por favor:
                                     <div className="form-card main-form">
                                         <div className="form-header">
                                             <h3>Proceso {proceso.numero || proceso.id}</h3>
-                                            <span className="form-subtitle">Resultados Densimetría 1</span>
+                                            <span className="form-subtitle">Resultados Densimétrica 1</span>
                                         </div>
 
                                         <div className="form-content">
@@ -2418,7 +2418,7 @@ Por favor:
                                         {loading ? '⏳ Finalizando...' : 'Finalizar Clasificación por densidad'}
                                     </button>
                                     <button className="btn-next" onClick={finalizarDensidad1} disabled={loading}>
-                                        Pasar a densimetría 2 →
+                                        Pasar a densimétrica 2 →
                                     </button>
                                 </div>
                             </div>
@@ -2430,7 +2430,7 @@ Por favor:
                                     <div className="form-card main-form">
                                         <div className="form-header">
                                             <h3>Proceso {proceso.numero || proceso.id}</h3>
-                                            <span className="form-subtitle">Resultados Densimetría 2</span>
+                                            <span className="form-subtitle">Resultados Densimétrica 2</span>
                                         </div>
 
                                         <div className="form-content">
@@ -2450,7 +2450,7 @@ Por favor:
                                                 <textarea
                                                     value={densimetria2Data.observaciones_densidad_2}
                                                     onChange={(e) => handleDensimetria2Change('observaciones_densidad_2', e.target.value)}
-                                                    placeholder="Ingrese observaciones para densimetría 2..."
+                                                    placeholder="Ingrese observaciones para densimétrica 2..."
                                                     rows="4"
                                                 />
                                             </div>
@@ -2471,7 +2471,7 @@ Por favor:
                                                 <textarea
                                                     value={tareaData.descripcion}
                                                     onChange={(e) => handleTareaChange('descripcion', e.target.value)}
-                                                    placeholder="Describa la tarea realizada para densimetría 2..."
+                                                    placeholder="Describa la tarea realizada para densimétrica 2..."
                                                     rows="3"
                                                     required
                                                 />
