@@ -195,7 +195,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="navbar">
+    <div className={`navbar ${isTablet ? 'navbar-collapsed' : ''}`}>
       <div className="navbar-brand">
         <h2>FAPECAFES</h2>
       </div>
