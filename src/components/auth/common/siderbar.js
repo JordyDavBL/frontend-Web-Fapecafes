@@ -11,6 +11,7 @@ const Sidebar = () => {
   const [unreadCount, setUnreadCount] = useState(0);
   const navigate = useNavigate();
   const [userName, setUserName] = useState('Usuario');
+  const [isTablet, setIsTablet] = useState(window.innerWidth <= 1024);
 
   // Verificar muestras contaminadas
   const verificarMuestrasContaminadas = async () => {
@@ -74,14 +75,6 @@ const Sidebar = () => {
       console.error('Error al verificar muestras contaminadas:', error);
     }
   };
-
-  const isTablet = window.innerWidth <= 1024;
-
-  return (
-    <aside className={`sidebar ${isTablet ? 'collapsed' : ''}`}>
-      {/* contenido */}
-    </aside>
-  );
 
   // Cargar notificaciones desde localStorage
   const cargarNotificaciones = () => {
