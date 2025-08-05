@@ -11,7 +11,7 @@ const Sidebar = () => {
   const [unreadCount, setUnreadCount] = useState(0);
   const navigate = useNavigate();
   const [userName, setUserName] = useState('Usuario');
-  const [isTablet, setIsTablet] = useState(window.innerWidth <= 1024);
+  const [isTablet, setIsTablet] = useState(window.innerWidth <= 1366);
 
   // Verificar muestras contaminadas
   const verificarMuestrasContaminadas = async () => {
