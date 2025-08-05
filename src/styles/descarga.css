@@ -465,3 +465,63 @@
 .tareas-completadas {
     animation: fadeIn 0.7s ease;
 }
+
+/* ✅ Modo tableta horizontal (768px – 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .descarga-content {
+        margin-left: 0; /* Evita espacio innecesario si el sidebar se oculta o se sobrepone */
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr; /* De 2 columnas a 1 */
+    }
+
+    .insumo-details {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tareas-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .tareas-grid {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .btn-crear-tarea,
+    .btn-limpiar {
+        width: 100%;
+    }
+
+    .form-card {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 1024px) {
+  .sidebar.collapsed {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    width: 250px;
+    height: 100vh;
+    background-color: white;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.collapsed.open {
+    transform: translateX(0);
+  }
+}
