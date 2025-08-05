@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Configuración base de la API
-const API_URL = 'http://localhost:8000/api';
+const API_URL = 'https://entorno-backend-fapecafes.onrender.com';
 
 // Instancia de axios configurada
 const api = axios.create({
@@ -175,7 +175,7 @@ export const crearSegundoMuestreo = async (data) => {
 // ==================== FUNCIONES DE PROPIETARIOS MAESTROS ====================
 export const buscarPropietarioPorCedula = async (cedula) => {
     try {
-        const response = await api.get(`/users/buscar-propietario/${cedula}/`);
+        const response = await api.get(`/api/users/buscar-propietario/${cedula}/`);
         return response.data;
     } catch (error) {
         console.error('Error al buscar propietario por cédula:', error);
@@ -185,7 +185,7 @@ export const buscarPropietarioPorCedula = async (cedula) => {
 
 export const obtenerPropietariosMaestros = async (params = {}) => {
     try {
-        const response = await api.get('/users/propietarios-maestros/', { params });
+        const response = await api.get('/api/users/propietarios-maestros/', { params });
         return response.data;
     } catch (error) {
         console.error('Error al obtener propietarios maestros:', error);
