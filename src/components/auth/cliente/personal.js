@@ -610,7 +610,7 @@ const Personal = () => {
                                             />
                                         </div>
                                         <div className="form-group">
-                                            <label>Departamento</label>
+                                            <label>Provincia</label>
                                             <input 
                                                 type="text" 
                                                 name="departamento" 
@@ -619,7 +619,7 @@ const Personal = () => {
                                             />
                                         </div>
                                         <div className="form-group">
-                                            <label>Municipio</label>
+                                            <label>Ciudad</label>
                                             <input 
                                                 type="text" 
                                                 name="municipio" 
@@ -628,7 +628,7 @@ const Personal = () => {
                                             />
                                         </div>
                                         <div className="form-group">
-                                            <label>Comunidad</label>
+                                            <label>Barrio</label>
                                             <input 
                                                 type="text" 
                                                 name="comunidad" 
@@ -637,7 +637,7 @@ const Personal = () => {
                                             />
                                         </div>
                                         <div className="form-group">
-                                            <label>Calle</label>
+                                            <label>Calle/Finca</label>
                                             <input 
                                                 type="text" 
                                                 name="calle" 
