@@ -273,7 +273,6 @@ const Dashboard = () => {
               <button className="search-button">🔍</button>
             </div>
             <div className="date-range">
-              <span className="date-label">12 May 25 - 12 Jun 25</span>
               <button className="export-button">Exportar</button>
             </div>
           </div>
