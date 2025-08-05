@@ -249,7 +249,7 @@ const Personal = () => {
         
         try {
             await axiosInstance.put(
-                `/api/users/propietarios-maestros/${propietarioEditando.id}/`,
+                `/propietarios-maestros/${propietarioEditando.id}/`,
                 formEditarPropietario
             );
             
