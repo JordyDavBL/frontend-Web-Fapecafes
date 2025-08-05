@@ -75,6 +75,14 @@ const Sidebar = () => {
     }
   };
 
+  const isTablet = window.innerWidth <= 1024;
+
+  return (
+    <aside className={`sidebar ${isTablet ? 'collapsed' : ''}`}>
+      {/* contenido */}
+    </aside>
+  );
+
   // Cargar notificaciones desde localStorage
   const cargarNotificaciones = () => {
     const notificacionesGuardadas = JSON.parse(localStorage.getItem('notificaciones') || '[]');
