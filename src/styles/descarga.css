@@ -525,3 +525,16 @@
     transform: translateX(0);
   }
 }
+
+.navbar-collapsed {
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.navbar-collapsed .navbar-actions {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
