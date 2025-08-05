@@ -4,6 +4,8 @@
     flex-direction: column;
     min-height: 100vh;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .descarga-content {
@@ -12,6 +14,8 @@
     margin-left: 280px;
     margin-bottom: 80px;
     max-width: calc(100vw - 300px);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .descarga-header {
@@ -46,6 +50,9 @@
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+    animation: fadeIn 0.5s ease;
 }
 
 .form-header {
@@ -62,7 +69,7 @@
 }
 
 .descarga-form {
-    padding: 30px;
+    padding: 40px;
 }
 
 .form-group {
@@ -80,7 +87,7 @@
 .form-group input,
 .form-group textarea,
 .form-group select {
-    width: 50%;
+    width: 100%;
     padding: 12px 15px;
     border: 2px solid #e0e6ed;
     border-radius: 8px;
@@ -146,17 +153,21 @@
     border-top: 1px solid #e9ecef;
 }
 
-.btn-crear-tarea {
-    background: #2c5530;
-    color: white;
-    border: none;
+.btn-crear-tarea,
+.btn-limpiar {
     padding: 12px 30px;
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 600;
+    min-width: 180px;
     cursor: pointer;
     transition: all 0.3s ease;
-    min-width: 180px;
+}
+
+.btn-crear-tarea {
+    background: #2c5530;
+    color: white;
+    border: none;
 }
 
 .btn-crear-tarea:hover:not(:disabled) {
@@ -176,13 +187,6 @@
     background: #95a5a6;
     color: white;
     border: none;
-    padding: 12px 30px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 180px;
 }
 
 .btn-limpiar:hover {
@@ -197,6 +201,7 @@
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    animation: fadeIn 0.7s ease;
 }
 
 .tareas-header {
@@ -253,6 +258,8 @@
     border-radius: 10px;
     padding: 20px;
     transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .tarea-card:hover {
@@ -301,28 +308,7 @@
     line-height: 1.5;
 }
 
-.tarea-horarios {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #e9ecef;
-}
-
-.horario-item {
-    margin-bottom: 8px;
-    font-size: 0.9rem;
-    color: #495057;
-}
-
-.horario-item:last-child {
-    margin-bottom: 0;
-}
-
-.horario-item strong {
-    color: #2c5530;
-}
-
+.tarea-horarios,
 .tarea-insumo {
     background: white;
     padding: 15px;
@@ -337,52 +323,41 @@
     font-weight: 600;
 }
 
-.tarea-insumo p {
-    margin: 0 0 5px 0;
+.tarea-insumo p,
+.horario-item {
     font-size: 0.85rem;
     color: #495057;
 }
 
-.tarea-insumo p:last-child {
-    margin-bottom: 0;
-}
-
+.horario-item strong,
 .tarea-insumo strong {
     color: #2c5530;
 }
 
-/* Responsive */
+/* Responsive + mejoras */
 @media (max-width: 1200px) {
     .descarga-content {
         margin-left: 0;
         max-width: 100vw;
         padding: 15px;
     }
-    
-    .descarga-header h1 {
-        font-size: 2rem;
-    }
-    
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
+
+    .form-row,
     .insumo-details {
         grid-template-columns: 1fr;
     }
-    
+
     .form-actions {
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     .tareas-header {
         flex-direction: column;
-        gap: 15px;
         text-align: center;
+        gap: 15px;
     }
-    
+
     .tareas-grid {
         grid-template-columns: 1fr;
         padding: 15px;
@@ -390,39 +365,51 @@
 }
 
 @media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
     .descarga-content {
         padding: 10px;
         margin-bottom: 60px;
     }
-    
+
     .descarga-header {
         padding: 20px;
     }
-    
+
     .descarga-header h1 {
         font-size: 1.8rem;
     }
-    
+
     .descarga-header p {
         font-size: 1rem;
     }
-    
+
     .descarga-form {
         padding: 20px;
     }
-    
+
     .insumo-section {
         padding: 20px;
     }
-    
+
     .tarea-card {
         padding: 15px;
     }
-    
+
     .tarea-header-card {
         flex-direction: column;
         gap: 10px;
         text-align: center;
+    }
+
+    .bottom-navigator {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
     }
 }
 
@@ -430,15 +417,38 @@
     .descarga-content {
         padding: 5px;
     }
-    
+
     .form-actions {
         gap: 10px;
+        flex-direction: column;
+        align-items: stretch;
     }
-    
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 0.9rem;
+    }
+
     .btn-crear-tarea,
     .btn-limpiar {
         min-width: auto;
         padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .tarea-content h4,
+    .tarea-content p,
+    .tarea-insumo p {
+        font-size: 0.9rem;
+    }
+
+    .descarga-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .descarga-header p {
+        font-size: 0.9rem;
     }
 }
 
@@ -452,89 +462,4 @@
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.tarea-card {
-    animation: fadeIn 0.3s ease;
-}
-
-.form-card {
-    animation: fadeIn 0.5s ease;
-}
-
-.tareas-completadas {
-    animation: fadeIn 0.7s ease;
-}
-
-/* ✅ Modo tableta horizontal (768px – 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .descarga-content {
-        margin-left: 0; /* Evita espacio innecesario si el sidebar se oculta o se sobrepone */
-        max-width: 100%;
-        padding: 15px;
-    }
-
-    .form-row {
-        grid-template-columns: 1fr; /* De 2 columnas a 1 */
-    }
-
-    .insumo-details {
-        grid-template-columns: 1fr;
-    }
-
-    .form-actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .tareas-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-    }
-
-    .tareas-grid {
-        grid-template-columns: 1fr;
-        padding: 15px;
-    }
-
-    .btn-crear-tarea,
-    .btn-limpiar {
-        width: 100%;
-    }
-
-    .form-card {
-        padding: 10px;
-    }
-}
-
-@media (max-width: 1024px) {
-  .sidebar.collapsed {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 1000;
-    width: 250px;
-    height: 100vh;
-    background-color: white;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-  }
-
-  .sidebar.collapsed.open {
-    transform: translateX(0);
-  }
-}
-
-.navbar-collapsed {
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  gap: 1rem;
-}
-
-.navbar-collapsed .navbar-actions {
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
 }
