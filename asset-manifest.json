@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/frontend-Web-Fapecafes/static/css/main.5a432458.css",
-    "main.js": "/frontend-Web-Fapecafes/static/js/main.7dbf5bef.js",
+    "main.css": "/frontend-Web-Fapecafes/static/css/main.2092ee62.css",
+    "main.js": "/frontend-Web-Fapecafes/static/js/main.e16c370a.js",
     "static/js/239.fcaddd2b.chunk.js": "/frontend-Web-Fapecafes/static/js/239.fcaddd2b.chunk.js",
     "static/js/977.d09af86f.chunk.js": "/frontend-Web-Fapecafes/static/js/977.d09af86f.chunk.js",
     "static/js/732.447e1da6.chunk.js": "/frontend-Web-Fapecafes/static/js/732.447e1da6.chunk.js",
     "static/js/453.8ab44547.chunk.js": "/frontend-Web-Fapecafes/static/js/453.8ab44547.chunk.js",
     "static/media/coffee-beans.jpg": "/frontend-Web-Fapecafes/static/media/coffee-beans.32b19b5a23cf792127a6.jpg",
     "index.html": "/frontend-Web-Fapecafes/index.html",
-    "main.5a432458.css.map": "/frontend-Web-Fapecafes/static/css/main.5a432458.css.map",
-    "main.7dbf5bef.js.map": "/frontend-Web-Fapecafes/static/js/main.7dbf5bef.js.map",
+    "main.2092ee62.css.map": "/frontend-Web-Fapecafes/static/css/main.2092ee62.css.map",
+    "main.e16c370a.js.map": "/frontend-Web-Fapecafes/static/js/main.e16c370a.js.map",
     "239.fcaddd2b.chunk.js.map": "/frontend-Web-Fapecafes/static/js/239.fcaddd2b.chunk.js.map",
     "977.d09af86f.chunk.js.map": "/frontend-Web-Fapecafes/static/js/977.d09af86f.chunk.js.map",
     "732.447e1da6.chunk.js.map": "/frontend-Web-Fapecafes/static/js/732.447e1da6.chunk.js.map",
     "453.8ab44547.chunk.js.map": "/frontend-Web-Fapecafes/static/js/453.8ab44547.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a432458.css",
-    "static/js/main.7dbf5bef.js"
+    "static/css/main.2092ee62.css",
+    "static/js/main.e16c370a.js"
   ]
 }
