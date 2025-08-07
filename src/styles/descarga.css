@@ -6,6 +6,7 @@
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     width: 100%;
     box-sizing: border-box;
+    overflow-x: hidden; /* Previene el scroll horizontal */
 }
 
 .descarga-content {
@@ -13,9 +14,46 @@
     padding: 20px;
     margin-left: 280px;
     margin-bottom: 80px;
-    max-width: calc(100vw - 300px);
     width: 100%;
     box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+    .descarga-content {
+        margin-left: 0;
+        padding: 15px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .form-card,
+    .tareas-completadas {
+        margin: 0 auto;
+        max-width: 95%;
+    }
+
+    .tareas-grid {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .insumo-details {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        padding: 15px;
+    }
+
+    .btn-crear-tarea,
+    .btn-limpiar {
+        width: 100%;
+        margin: 5px 0;
+    }
 }
 
 .descarga-header {
