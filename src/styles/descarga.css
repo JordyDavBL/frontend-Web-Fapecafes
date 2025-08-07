@@ -376,61 +376,27 @@
 @media (max-width: 1200px) {
     .descarga-content {
         margin-left: 0;
-        max-width: 100vw;
-        padding: 20px;
-    }
-}
-
-/* Nuevo breakpoint específico para tablets */
-@media (max-width: 1024px) {
-    .descarga-content {
+        max-width: 100%;
+        width: 100%;
         padding: 15px;
+        box-sizing: border-box;
     }
 
-    .descarga-header {
-        padding: 25px;
-    }
-
-    .descarga-header h1 {
-        font-size: 2rem;
-    }
-
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .insumo-details {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-
-    .tareas-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 15px;
-    }
-
-    .descarga-form {
-        padding: 25px;
-    }
-
-    .form-actions {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .btn-crear-tarea,
-    .btn-limpiar {
-        min-width: 150px;
+    .form-card,
+    .tareas-completadas {
+        width: 100%;
+        margin: 0 auto;
     }
 }
 
-@media (max-width: 768px) {
-    .sidebar {
-        display: none;
+@media (max-width: 1024px) {
+    .descarga-container {
+        overflow-x: hidden;
     }
 
     .descarga-content {
         padding: 10px;
+        margin-left: 0;
         margin-bottom: 60px;
     }
 
@@ -442,34 +408,79 @@
         font-size: 1.8rem;
     }
 
-    .descarga-header p {
-        font-size: 1rem;
-    }
-
     .descarga-form {
         padding: 20px;
     }
 
-    .insumo-section {
-        padding: 20px;
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .insumo-details {
+        grid-template-columns: 1fr;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .btn-crear-tarea,
+    .btn-limpiar {
+        width: 100%;
+        min-width: auto;
+        margin: 5px 0;
+    }
+
+    .tareas-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 15px;
     }
 
     .tarea-card {
-        padding: 15px;
+        width: 100%;
     }
 
     .tarea-header-card {
         flex-direction: column;
-        gap: 10px;
         text-align: center;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .descarga-container {
+        padding: 0;
     }
 
-    .bottom-navigator {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        z-index: 100;
+    .descarga-content {
+        padding: 10px;
+    }
+
+    .descarga-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .descarga-header p {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px; /* Previene zoom en iOS */
+        padding: 10px;
+    }
+
+    .insumo-section {
+        padding: 15px;
+    }
+
+    .insumo-section h3 {
+        font-size: 1.1rem;
     }
 }
 
@@ -478,36 +489,21 @@
         padding: 5px;
     }
 
-    .form-actions {
-        gap: 10px;
-        flex-direction: column;
-        align-items: stretch;
+    .descarga-header {
+        padding: 15px;
     }
 
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
+    .descarga-form {
+        padding: 15px;
+    }
+
+    .form-group label {
         font-size: 0.9rem;
     }
 
     .btn-crear-tarea,
     .btn-limpiar {
-        min-width: auto;
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-
-    .tarea-content h4,
-    .tarea-content p,
-    .tarea-insumo p {
-        font-size: 0.9rem;
-    }
-
-    .descarga-header h1 {
-        font-size: 1.5rem;
-    }
-
-    .descarga-header p {
+        padding: 10px;
         font-size: 0.9rem;
     }
 }
