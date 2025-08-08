@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/frontend-Web-Fapecafes/static/css/main.6ab84ab8.css",
+    "main.css": "/frontend-Web-Fapecafes/static/css/main.5a6fea56.css",
     "main.js": "/frontend-Web-Fapecafes/static/js/main.7dbf5bef.js",
     "static/js/239.fcaddd2b.chunk.js": "/frontend-Web-Fapecafes/static/js/239.fcaddd2b.chunk.js",
     "static/js/977.d09af86f.chunk.js": "/frontend-Web-Fapecafes/static/js/977.d09af86f.chunk.js",
@@ -8,7 +8,7 @@
     "static/js/453.8ab44547.chunk.js": "/frontend-Web-Fapecafes/static/js/453.8ab44547.chunk.js",
     "static/media/coffee-beans.jpg": "/frontend-Web-Fapecafes/static/media/coffee-beans.32b19b5a23cf792127a6.jpg",
     "index.html": "/frontend-Web-Fapecafes/index.html",
-    "main.6ab84ab8.css.map": "/frontend-Web-Fapecafes/static/css/main.6ab84ab8.css.map",
+    "main.5a6fea56.css.map": "/frontend-Web-Fapecafes/static/css/main.5a6fea56.css.map",
     "main.7dbf5bef.js.map": "/frontend-Web-Fapecafes/static/js/main.7dbf5bef.js.map",
     "239.fcaddd2b.chunk.js.map": "/frontend-Web-Fapecafes/static/js/239.fcaddd2b.chunk.js.map",
     "977.d09af86f.chunk.js.map": "/frontend-Web-Fapecafes/static/js/977.d09af86f.chunk.js.map",
@@ -16,7 +16,7 @@
     "453.8ab44547.chunk.js.map": "/frontend-Web-Fapecafes/static/js/453.8ab44547.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6ab84ab8.css",
+    "static/css/main.5a6fea56.css",
     "static/js/main.7dbf5bef.js"
   ]
 }
